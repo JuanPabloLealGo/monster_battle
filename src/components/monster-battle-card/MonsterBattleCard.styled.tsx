@@ -13,14 +13,16 @@ export const BattleMonsterCard = styled(Card, { shouldForwardProp: (prop) => pro
     alignItems: centralized ? 'center' : 'auto',
     justifyContent: centralized ? 'center' : 'auto',
 }))
-  
-export const BattleMonsterTitle = styled(Typography)(() => ({
+
+export const BattleMonsterTitle = styled(Typography, { shouldForwardProp: (prop) => prop !== "centralized" })<{ centralized?: boolean; }>(({ centralized }) => ({
     fontFamily: 'Roboto',
     fontStyle: 'normal',
     fontWeight: '400',
-    fontSize: '36px',
-    lineHeight: '42px',
+    fontSize: centralized ? '36px' : '22px',
+    lineHeight: centralized ? '42px' : '25px',
     color: colors.black,
+    padding: centralized ? '0px' : '14px 0 5px 0',
+    borderBottom: centralized ? 'none' : '1px solid rgba(0, 0, 0, 0.1)',
 }))
 
 export const ProgressBar = styled(LinearProgress)(() => ({
@@ -34,3 +36,13 @@ export const ProgressBar = styled(LinearProgress)(() => ({
         backgroundColor: colors.progressColor,
     },
 }));
+
+export const TitleSkill = styled(Typography)(() => ({
+    fontFamily: 'Roboto',
+    fontStyle: 'normal',
+    fontWeight: '400',
+    fontSize: '12px',
+    lineHeight: '14px',
+    color: colors.black,
+    padding: '11px 0 5px 0',
+}))

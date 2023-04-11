@@ -12,16 +12,16 @@ const root = createRoot(container)
 const strictMode = process.env.NODE_ENV === 'production'
 
 root.render(
-  (strictMode && (
+  strictMode ? (
     <React.StrictMode>
       <Provider store={store}>
         <App />
       </Provider>
     </React.StrictMode>
-  )) || (
-  <Provider store={store}>
-    <App />
-  </Provider>
+  ) : (
+    <Provider store={store}>
+      <App />
+    </Provider>
   ),
 )
 
